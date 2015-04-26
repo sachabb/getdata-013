@@ -72,10 +72,10 @@ run_analysis <- function() {
 
 	dsplit <- split(data, subject)
 	data2 <- data.frame()
-
-	for (i in 1:length(dsplit)) {
-		data2[i] <- apply(dsplit[[i]], 2, mean)
-	}
-
-	data2
+	
+	for (i in dsplit) {
+		data2 <- cbind(tapply(i, i$activity, mean), data2)
+		}
+	
+	write.table(data2, "tidy_data2.txt", row.name=FALSE)
 }
