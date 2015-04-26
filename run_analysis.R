@@ -74,7 +74,7 @@ run_analysis <- function() {
 	data2 <- data.frame()
 	
 	for (i in dsplit) {
-		data2 <- cbind(tapply(i, i$activity, mean), data2)
+		data2 <- rbind(tapply(i, i$activity, mean), data2)
 		}
 	
 	write.table(data2, "tidy_data2.txt", row.name=FALSE)
